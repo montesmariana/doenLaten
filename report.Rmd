@@ -1,0 +1,23 @@
+---
+title: "Report"
+author: "Mariana Montes"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE) # do not show code
+source('analysis.R') # obtain code from analysis.R
+raw_data <- read_data(data_file) %>% refactor_data()
+```
+
+In this report we will analyse Levshina's *doen-laten* dataset,
+which as `r nrow(raw_data)` rows and `r length(raw_data)` columns.
+We've run logistic regression to predict the odds of *doen* against *laten* based on the different predictors.
+
+```{r, echo=FALSE}
+m <- model(raw_data)
+summary(m)
+```
+
+The $C$ value of the logistic regression model is `r sprintf("%.3f", get_c(m, raw_data))`.
