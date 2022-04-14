@@ -18,3 +18,5 @@ install.packages('tarchetypes')
 install.packages('devtools')
 devtools::install_github("haozhu233/kableExtra")
 renv::remove('devtools')
+
+renv::snapshot()

@@ -32,7 +32,7 @@ prettify_model <- function(model, mydata) {
     mutate(varparse = if_else(class == 'factor', sprintf("<strong>%s</strong> vs. %s", varvalues, reference), ''))
   
   response <- all.vars(formula(model))[[1]]
-  predicted_response <- levels(mydata[[response]])[[1]]
+  predicted_response <- levels(mydata[[response]])[[2]]
   
   as_tibble(data.frame(summary(model)$coefficients), rownames = "Variables") %>% 
     left_join(variables, by = c('Variables' = 'varcode')) %>% 
@@ -51,7 +51,7 @@ prettify_model <- function(model, mydata) {
       Significance,
       `Odds Ratio` = Odds,
     ) %>% 
-    kable(escape = F, booktabs = T, caption = sprintf("Logistic regression model predicting %s.", predicted_response)) %>% 
+    kable(escape = F, booktabs = T, caption = sprintf("Logistic regression model predicting *%s*.", predicted_response)) %>% 
     kable_paper() %>% 
     collapse_rows(columns = 1, valign = 'top')
   
