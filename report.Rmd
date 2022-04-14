@@ -17,7 +17,7 @@ We've run logistic regression to predict the odds of *doen* against *laten* base
 We are now running everything with `targets`!.
 
 ```{r, echo=FALSE}
-summary(tar_read(m))
+tar_read(pretty_table)
 ```
 
 The $C$ value of the logistic regression model is `r sprintf("%.3f", tar_read(C))`.
