@@ -1,10 +1,3 @@
-library(tidyverse)
-library(Hmisc)
-
-library(tidyverse)
-library(Hmisc)
-
-data_file <- 'data.csv'
 read_data <- function(data_file) {
   read_csv(data_file, show_col_types = F)
 }

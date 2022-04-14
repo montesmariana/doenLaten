@@ -8,3 +8,10 @@ readr::write_csv(doenLaten, 'data.csv')
 
 renv::snapshot()
 install.packages('Hmisc')
+
+renv::snapshot()
+install.packages('targets')
+
+targets::tar_script()
+
+install.packages('tarchetypes')
